@@ -3,8 +3,10 @@ package se.imperialpg.bat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import dev.stefanmarkan.Book;
+import dev.stefanmarkan.Rating;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +19,14 @@ public class Main {
 
         Collections.shuffle(availableBooks);
         books.addAll(availableBooks.subList(0, 3));
+
+        Random random = new Random();
+        for (Book book : books) {
+            for (int i = 1; i <= 3; i++) {
+                int score = random.nextInt(1, 11);
+                book.AddRating(new Rating("Reader " + i, "reader" + i + "@example.com", score));
+            }
+        }
 
         books.forEach(System.out::println);
     }
