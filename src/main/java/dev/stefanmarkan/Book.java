@@ -16,6 +16,11 @@ public class Book {
         ratingList = new ArrayList<Rating>();
     }
 
+    /**
+     * adds rating to book rating list if no duplicate email
+     * 
+     * @param r rating to add
+     */
     public void AddRating(Rating r) {
         if (!listHasEmail(r.email())) {
             ratingList.add(r);
@@ -24,6 +29,11 @@ public class Book {
         }
     }
 
+    /**
+     * 
+     * @param email email to check if exists
+     * @return
+     */
     private boolean listHasEmail(String email) {
         for (Rating r : ratingList) {
             if (r.email().equalsIgnoreCase(email))
@@ -37,7 +47,6 @@ public class Book {
         return String.format("""
                 Title: %s
                 Author: %s
-
                 ISBN: %s
                 Avarage rating: %.2f
                 """,
@@ -48,8 +57,12 @@ public class Book {
 
     }
 
+    /**
+     * 
+     * @return avarage rating score from all avaliable ratings
+     */
     public double getAvarageRating() {
-        int total = 0;
+        double total = 0;
         for (Rating r : ratingList) {
             total += r.score();
         }
