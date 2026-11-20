@@ -29,6 +29,17 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>se.imperialpg.bat.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.6.1</version>
             </plugin>
